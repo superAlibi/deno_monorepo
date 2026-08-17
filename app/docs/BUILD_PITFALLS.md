@@ -88,10 +88,10 @@ fuser -k 5020/tcp 5021/tcp 5022/tcp 5023/tcp 5024/tcp 5025/tcp 5026/tcp 2>/dev/n
 文档示例里的 `import { serve } from "@ts-api-kit/core"` **不存在**。正确写法：
 
 ```ts
-import { Server } from "@ts-api-kit/core";
+import { Server } from '@ts-api-kit/core';
 
 const server = new Server();
-await server.configureRoutes("./src/routes");
+await server.configureRoutes('./src/routes');
 await server.start(5022);
 ```
 
@@ -123,11 +123,11 @@ cd apps/nitro-server && npm install
 
 ### import 来源搞错（最常见）
 
-| 符号 | 错误写法 | 正确写法 |
-|------|----------|----------|
-| `defineHandler` | `from "nitro"` | `from "h3"` |
+| 符号              | 错误写法       | 正确写法               |
+| ----------------- | -------------- | ---------------------- |
+| `defineHandler`   | `from "nitro"` | `from "h3"`            |
 | `defineRouteMeta` | `from "nitro"` | `from "nitro/runtime"` |
-| `getRouterParam` | — | `from "h3"` |
+| `getRouterParam`  | —              | `from "h3"`            |
 
 Nitro 3 主入口 `nitro/dist/index.mjs` **不导出**上述 handler/meta 符号，构建产物 import 会直接 SyntaxError。
 
@@ -164,9 +164,9 @@ cd apps/nitro-server
 
 ```ts
 app.exposeScalarOpenAPI({
-  title: "...",
-  openapiJsonPath: "/openapi.json",
-  docsPath: "/docs",
+  title: '...',
+  openapiJsonPath: '/openapi.json',
+  docsPath: '/docs',
 });
 ```
 
@@ -207,7 +207,7 @@ export function allMethods(handler) {
 yelix.serveAPIReference(ScalarReference);
 
 // 对
-yelix.serveAPIReference(new ScalarReference("/docs"));
+yelix.serveAPIReference(new ScalarReference('/docs'));
 ```
 
 ### 文件名 `[status].ts` 的 import 路径
@@ -217,7 +217,7 @@ yelix.serveAPIReference(new ScalarReference("/docs"));
 因此：
 
 ```ts
-import { allMethods } from "../helpers.ts";  // → api/helpers.ts
+import { allMethods } from '../helpers.ts'; // → api/helpers.ts
 ```
 
 写 `./helpers.ts` 会变成 `api/success/helpers.ts` → **Module not found**。
@@ -284,12 +284,12 @@ CMD ["deno", "run", "--allow-net", "--allow-env", "main.ts"]
 
 ## 12. 若只保留一个「自动生成文档」方案
 
-| 优先级 | 框架 | 理由 |
-|--------|------|------|
-| 推荐 | Hono + zod-openapi | 生态成熟、纯 Deno、文档与类型一体 |
-| 备选 | ts-api-kit | 文件路由清晰、Scalar 开箱即用 |
-| 学习成本最高 | Nitro | 需 Node 工具链 + 构建时 meta + 路径别名限制 |
-| API 与文档差距大 | Daloy 0.1.x | 版本文档超前，需手动挂文档路由 |
-| 维护活跃度低 | @murat/yelix | 端口/生命周期 API 晦涩，Downloads 很少 |
+| 优先级           | 框架               | 理由                                        |
+| ---------------- | ------------------ | ------------------------------------------- |
+| 推荐             | Hono + zod-openapi | 生态成熟、纯 Deno、文档与类型一体           |
+| 备选             | ts-api-kit         | 文件路由清晰、Scalar 开箱即用               |
+| 学习成本最高     | Nitro              | 需 Node 工具链 + 构建时 meta + 路径别名限制 |
+| API 与文档差距大 | Daloy 0.1.x        | 版本文档超前，需手动挂文档路由              |
+| 维护活跃度低     | @murat/yelix       | 端口/生命周期 API 晦涩，Downloads 很少      |
 
 H3 保留作**无文档基线**即可，适合对比「手写 vs 自动生成」的维护成本。

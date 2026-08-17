@@ -3,7 +3,7 @@ import {
   NO_BODY_METHODS,
   NO_BODY_RESPONSE_STATUSES,
   NO_RESPONSE_BODY_METHODS,
-} from "./constants.ts";
+} from './constants.ts';
 
 export type QueryRecord = Record<string, string | string[]>;
 
@@ -42,12 +42,12 @@ export async function parseRequestBody(
     return null;
   }
 
-  const contentType = req.headers.get("Content-Type")?.toLowerCase() ?? "";
+  const contentType = req.headers.get('Content-Type')?.toLowerCase() ?? '';
   try {
-    if (contentType.includes("application/json")) {
+    if (contentType.includes('application/json')) {
       return await req.json();
     }
-    if (contentType.includes("application/x-www-form-urlencoded")) {
+    if (contentType.includes('application/x-www-form-urlencoded')) {
       const formData = await req.formData();
       const fields: Record<string, string | File> = {};
       formData.forEach((value, key) => {
@@ -55,7 +55,7 @@ export async function parseRequestBody(
       });
       return fields;
     }
-    if (contentType.includes("text/plain")) {
+    if (contentType.includes('text/plain')) {
       return await req.text();
     }
   } catch (error) {
@@ -80,14 +80,14 @@ export function buildResponse(
     return new Response(null, { status });
   }
 
-  const accept = req.headers.get("Accept")?.toLowerCase() ?? "";
-  if (accept.includes("application/json")) {
+  const accept = req.headers.get('Accept')?.toLowerCase() ?? '';
+  if (accept.includes('application/json')) {
     return Response.json(payload, { status });
   }
 
   return new Response(JSON.stringify(payload), {
     status,
-    headers: { "Content-Type": "application/json" },
+    headers: { 'Content-Type': 'application/json' },
   });
 }
 
@@ -96,15 +96,15 @@ export async function handleSuccessRequest(
   status: number,
   query: QueryRecord,
 ): Promise<Response> {
-  const contentType = req.headers.get("Content-Type")?.toLowerCase() ?? null;
+  const contentType = req.headers.get('Content-Type')?.toLowerCase() ?? null;
   const body = await parseRequestBody(req, req.method);
-  const accept = req.headers.get("Accept")?.toLowerCase() ?? "";
+  const accept = req.headers.get('Accept')?.toLowerCase() ?? '';
 
-  let message = "this is default response";
-  if (accept.includes("application/json")) {
-    message = "this is json response";
-  } else if (accept.includes("text/plain")) {
-    message = "this is text response";
+  let message = 'this is default response';
+  if (accept.includes('application/json')) {
+    message = 'this is json response';
+  } else if (accept.includes('text/plain')) {
+    message = 'this is text response';
   }
 
   return buildResponse(
@@ -120,7 +120,7 @@ export async function handleErrorRequest(
   query: QueryRecord,
   message: string,
 ): Promise<Response> {
-  const contentType = req.headers.get("Content-Type")?.toLowerCase() ?? null;
+  const contentType = req.headers.get('Content-Type')?.toLowerCase() ?? null;
   const body = await parseRequestBody(req, req.method);
   return buildResponse(
     req,
@@ -135,8 +135,8 @@ export function handleTimeoutRequest(
   timeoutMs = DEFAULT_TIMEOUT_MS,
 ): Promise<Response> {
   const { promise, resolve } = Promise.withResolvers<Response>();
-  const contentType = req.headers.get("Content-Type")?.toLowerCase() ?? null;
-  const accept = req.headers.get("Accept")?.toLowerCase() ?? "";
+  const contentType = req.headers.get('Content-Type')?.toLowerCase() ?? null;
+  const accept = req.headers.get('Accept')?.toLowerCase() ?? '';
   const rawTimeout = query.timeout;
   const timeout = rawTimeout
     ? Number(Array.isArray(rawTimeout) ? rawTimeout[0] : rawTimeout)
@@ -146,9 +146,9 @@ export function handleTimeoutRequest(
     void (async () => {
       const body = await parseRequestBody(req, req.method);
       let message = `this is default response with timeout ${timeout}`;
-      if (accept.includes("application/json")) {
+      if (accept.includes('application/json')) {
         message = `this is json response with timeout ${timeout}`;
-      } else if (accept.includes("text/plain")) {
+      } else if (accept.includes('text/plain')) {
         message = `this is text response with timeout ${timeout}`;
       }
       resolve(

@@ -1,4 +1,4 @@
-import type { RouteConfig, RouteHandler } from "@hono/zod-openapi";
+import type { RouteConfig, RouteHandler } from '@hono/zod-openapi';
 
 /**
  * 桥接返回原生 `Response` 的 handler。

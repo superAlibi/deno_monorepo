@@ -1,0 +1,7 @@
+{
+  "name": "@lab/shared",
+  "exports": "./src/index.ts",
+  "imports": {
+    "zod": "npm:zod@4"
+  }
+}

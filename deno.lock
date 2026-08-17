@@ -1,0 +1,120 @@
+{
+  "version": "5",
+  "specifiers": {
+    "npm:@hono/zod-openapi@1": "1.6.0_hono@4.13.2_zod@4.4.3",
+    "npm:@scalar/hono-api-reference@0.11": "0.11.14_hono@4.13.2",
+    "npm:hono@4": "4.13.2",
+    "npm:zod@4": "4.4.3"
+  },
+  "npm": {
+    "@asteasolutions/zod-to-openapi@9.1.0_zod@4.4.3": {
+      "integrity": "sha512-pLMeRgRYS7/vZIgAAkOe2P6+XGTifR1MT9pqDoxZ11EmcJJ+DPmdPqLN8ZZF4U8R9KHCCQCS9c2wtuE8wSrfkw==",
+      "dependencies": [
+        "openapi3-ts",
+        "zod"
+      ]
+    },
+    "@hono/zod-openapi@1.6.0_hono@4.13.2_zod@4.4.3": {
+      "integrity": "sha512-42HXUBIaGmQh+hZGLw3Hy5piOreIXgnBnUSs55mtn2gnW/xWtU9nQwEUtRRCk5to8Vm2XbfO0J83eUCwCf5eTg==",
+      "dependencies": [
+        "@asteasolutions/zod-to-openapi",
+        "@hono/zod-validator",
+        "hono",
+        "openapi3-ts",
+        "zod"
+      ]
+    },
+    "@hono/zod-validator@0.9.0_hono@4.13.2_zod@4.4.3": {
+      "integrity": "sha512-n0ZSXmCiHVIp4Y5wlOOyZCeTd/rsawA/qW1cipB8QOYKZ9N8Tk0nZUZCXho9cu374AN4JpDNKioNKBJ/W+LBug==",
+      "dependencies": [
+        "hono",
+        "zod"
+      ]
+    },
+    "@scalar/client-side-rendering@0.3.7": {
+      "integrity": "sha512-B0ePjn0/hv1JS/dM+C2IVmU7hily4a3m8Tcd8DbfQtMMRtGH0AQB4RBZS8rTNORqVZQyXVSCv8HCwkg3f2f3eQ==",
+      "dependencies": [
+        "@scalar/schemas",
+        "@scalar/types",
+        "@scalar/validation"
+      ]
+    },
+    "@scalar/helpers@0.10.0": {
+      "integrity": "sha512-IAfnpIZnXY6ni+zyFMwWHBa5b/7yr4mCSvoTGR84oS9q4Quy2wjgafnr7CyfL65ney3iilBZHigZYLYqdqCu3Q=="
+    },
+    "@scalar/hono-api-reference@0.11.14_hono@4.13.2": {
+      "integrity": "sha512-Ld8Y5lGRTWC7pco1AcDWfuZWQ+KxFEDrJM/L9zc1W/iFREEXsjE8eJd1FPnIj2cthBKhaYZ1/VbIFQNhQ7RVHA==",
+      "dependencies": [
+        "@scalar/client-side-rendering",
+        "hono"
+      ]
+    },
+    "@scalar/schemas@0.8.1": {
+      "integrity": "sha512-SGB/Verzjf6wpULdOIQfCCPvG46GTVYawirjQ8AVSFSIMduS6zz1MpL+I90Z8/zjeSbjtwRoLtjjWb2yByEjfQ==",
+      "dependencies": [
+        "@scalar/helpers",
+        "@scalar/validation"
+      ]
+    },
+    "@scalar/types@0.18.0": {
+      "integrity": "sha512-rAlZEzcNSyMohzJGrkjZQkf7RcvXYl2sVIkeTAt90Ag9M/W2D+yITDbVTAOT+GXWrvG+/XvEqEBnspjt2TfyQQ==",
+      "dependencies": [
+        "@scalar/helpers",
+        "nanoid",
+        "type-fest",
+        "zod"
+      ]
+    },
+    "@scalar/validation@0.6.2": {
+      "integrity": "sha512-Sc1TkcwGV6aVCO51AyKeaGiP8gpwAHxEtO5d3tZzPV+KsnlC/YokQxFxwBrbIXw73k9hmcExnJyGu3k5i6n6VA=="
+    },
+    "hono@4.13.2": {
+      "integrity": "sha512-JydRilDRkYBQMt9qR9U92mXxmbGqsqSn/IKOrh4e7/gEbn+0zSr8igTu0obwJoNGN4sez28DIql7FBHWydoJpA=="
+    },
+    "nanoid@5.1.16": {
+      "integrity": "sha512-kVrnsrJqMR8+oLJnGEmSWw9BivK5mt7H3FZatVRjrc5wGqFYuBxX1yG7+A7Gi5AefkX6t/oCkizcQgpu0cY1dQ==",
+      "bin": true
+    },
+    "openapi3-ts@4.6.1": {
+      "integrity": "sha512-XW9MOldkhoICNeXVzzmXzmOW5G73ppOEGmh7fLCqHjgfdEYCGGN+00MlVCeUZgovjjfC56j9tvtDt1zGabNjjA==",
+      "dependencies": [
+        "yaml"
+      ]
+    },
+    "tagged-tag@1.0.0": {
+      "integrity": "sha512-yEFYrVhod+hdNyx7g5Bnkkb0G6si8HJurOoOEgC8B/O0uXLHlaey/65KRv6cuWBNhBgHKAROVpc7QyYqE5gFng=="
+    },
+    "type-fest@5.8.0": {
+      "integrity": "sha512-YGYEVz3Fm5iy/AybuA0oyNFq7H4CgQNfRp/qfe8nurE1kuCeNm3/vfm9X4Mtl+qLyaKJUh5xrFZwogr41SMjYA==",
+      "dependencies": [
+        "tagged-tag"
+      ]
+    },
+    "yaml@2.9.0": {
+      "integrity": "sha512-2AvhNX3mb8zd6Zy7INTtSpl1F15HW6Wnqj0srWlkKLcpYl/gMIMJiyuGq2KeI2YFxUPjdlB+3Lc10seMLtL4cA==",
+      "bin": true
+    },
+    "zod@4.4.3": {
+      "integrity": "sha512-ytENFjIJFl2UwYglde2jchW2Hwm4GJFLDiSXWdTrJQBIN9Fcyp7n4DhxJEiWNAJMV1/BqWfW/kkg71UDcHJyTQ=="
+    }
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@std/assert@1"
+    ],
+    "members": {
+      "app": {
+        "dependencies": [
+          "npm:@hono/zod-openapi@1",
+          "npm:@scalar/hono-api-reference@0.11",
+          "npm:hono@4"
+        ]
+      },
+      "packages/shared": {
+        "dependencies": [
+          "npm:zod@4"
+        ]
+      }
+    }
+  }
+}

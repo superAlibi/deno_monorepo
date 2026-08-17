@@ -58,13 +58,13 @@ export const SERVER_ERROR_STATUSES = [
 ] as const;
 
 export const NO_BODY_METHODS = [
-  "get",
-  "head",
-  "options",
-  "trace",
-  "connect",
+  'get',
+  'head',
+  'options',
+  'trace',
+  'connect',
 ] as const;
-export const NO_RESPONSE_BODY_METHODS = ["head", "trace", "connect"] as const;
+export const NO_RESPONSE_BODY_METHODS = ['head', 'trace', 'connect'] as const;
 export const NO_BODY_RESPONSE_STATUSES = [204, 205, 206] as const;
 
 export const DEFAULT_TIMEOUT_MS = 60_000;

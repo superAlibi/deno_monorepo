@@ -4,6 +4,7 @@ import { ApiResponseSchema, StatusParamsSchema, TimeoutQuerySchema } from './sch
 export const successRoute = createRoute({
   method: 'get',
   path: '/success/{status}',
+  operationId: 'getSuccessByStatus',
   tags: ['成功响应'],
   summary: '返回20x系列响应',
   request: {
@@ -24,6 +25,7 @@ export const successRoute = createRoute({
 export const redirectRoute = createRoute({
   method: 'get',
   path: '/redirect/{status}',
+  operationId: 'getRedirectByStatus',
   tags: ['重定响应'],
   summary: '返回重定向响应',
   request: {
@@ -39,6 +41,7 @@ export const redirectRoute = createRoute({
 export const clientErrorRoute = createRoute({
   method: 'get',
   path: '/client-error/{status}',
+  operationId: 'getClientErrorByStatus',
   tags: ['客户端错误'],
   summary: '返回指定状态码的客户端错误',
   description: '返回指定状态码的客户端错误',
@@ -56,6 +59,7 @@ export const clientErrorRoute = createRoute({
 export const serverErrorRoute = createRoute({
   method: 'get',
   path: '/server-error/{status}',
+  operationId: 'getServerErrorByStatus',
   tags: ['服务器错误'],
   summary: '返回指定状态码的服务器错误',
   request: {
@@ -76,6 +80,7 @@ export const serverErrorRoute = createRoute({
 export const timeoutRoute = createRoute({
   method: 'get',
   path: '/timeout',
+  operationId: 'getTimeout',
   tags: ['延时响应'],
   summary: '根据请求参数返回延时响应',
   request: {

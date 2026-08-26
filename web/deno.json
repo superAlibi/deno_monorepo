@@ -6,11 +6,13 @@
     "dev": "vite",
     "build": "vite build",
     "start": "deno serve -A _fresh/server.js",
-    "update": "deno run -A -r jsr:@fresh/update ."
+    "update": "deno run -A -r jsr:@fresh/update .",
+    "gen:api": "deno task --filter=@lab/server export:openapi && deno run -A npm:@hey-api/openapi-ts@0.0.0-next-20260824173136"
   },
   "lint": { "rules": { "tags": ["fresh", "recommended"] } },
   "exclude": ["**/_fresh/*"],
   "imports": {
+    "@hey-api/openapi-ts": "npm:@hey-api/openapi-ts@0.0.0-next-20260824173136",
     "@deno/kv-oauth": "jsr:@deno/kv-oauth@^0.11.0",
     "@headlessui/react": "npm:@headlessui/react@^2.2.9",
     "@preact/signals": "npm:@preact/signals@^2.5.1",

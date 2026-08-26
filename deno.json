@@ -12,7 +12,10 @@
     "fmt": "deno fmt",
     "lint": "deno lint",
     "test": "deno test",
-    "check": "deno check **/*.ts"
+    "check": "deno check **/*.ts",
+    "dev:server": "deno task --filter=@lab/server dev",
+    "dev:web": "deno task --filter=@lab/web dev"
+
   },
   "lint": {
     "rules": {

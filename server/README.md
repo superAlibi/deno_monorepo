@@ -1,4 +1,4 @@
-# @lab/app
+# @lab/server
 
 从 [deno_h3](https://github.com/superAlibi/deno_h3) 迁入的 HTTP 测试服务。用 Hono + `@hono/zod-openapi` 提供 OpenAPI 文档，通过 `Deno.serve` 启动。
 
@@ -7,7 +7,7 @@
 构建与迁移过程中的踩坑记录见 [docs/BUILD_PITFALLS.md](./docs/BUILD_PITFALLS.md)。
 
 ```sh
-deno task --filter "@lab/app" dev
+deno task --filter "@lab/server" dev
 ```
 
 默认 http://localhost:8000。

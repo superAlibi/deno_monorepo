@@ -2161,13 +2161,6 @@
       "jsr:@std/assert@1"
     ],
     "members": {
-      "app": {
-        "dependencies": [
-          "npm:@hono/zod-openapi@1",
-          "npm:@scalar/hono-api-reference@0.11",
-          "npm:hono@4"
-        ]
-      },
       "packages/playground": {
         "dependencies": [
           "jsr:@haltcase/strat@2",
@@ -2178,6 +2171,13 @@
       "packages/shared": {
         "dependencies": [
           "npm:zod@4"
+        ]
+      },
+      "server": {
+        "dependencies": [
+          "npm:@hono/zod-openapi@1",
+          "npm:@scalar/hono-api-reference@0.11",
+          "npm:hono@4"
         ]
       },
       "web": {

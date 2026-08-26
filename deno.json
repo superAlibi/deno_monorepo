@@ -1,5 +1,5 @@
 {
-  "workspace": ["packages/*", "app", "web"],
+  "workspace": ["packages/*", "server", "web"],
   "nodeModulesDir": "auto",
   "unstable": ["temporal", "kv"],
   "compilerOptions": {

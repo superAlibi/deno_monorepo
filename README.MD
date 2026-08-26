@@ -15,7 +15,7 @@
 ```text
 .
 ├── deno.json              # workspace 根配置
-├── app/                   # HTTP 测试服务（OpenAPI/Hono，从 deno_h3 迁入）
+├── server/                # HTTP 测试服务（OpenAPI/Hono，从 deno_h3 迁入）
 │   ├── deno.json
 │   ├── main.ts
 │   ├── src/
@@ -28,13 +28,13 @@
 │   └── …
 ├── packages/
 │   ├── playground/        # Temporal + using 示例
-│   └── shared/            # app 的共享响应逻辑
+│   └── shared/            # server 的共享响应逻辑
 └── README.md
 ```
 
 实验和库放在 `packages/<name>/`。根配置用 `packages/*` 自动收录一层目录，无需每次改根 `deno.json`。
 
-可启动应用放在仓库根下并单独列入 workspace：`app/`（`@lab/app`，Hono/OpenAPI）与 `web/`（`@lab/web`，Fresh v2）。这样既能 `import { … } from '@lab/<name>'` 引用 `packages` 里的包，又不会和应用实验混在一起。`app` 的构建踩坑记录见 [`app/docs/BUILD_PITFALLS.md`](./app/docs/BUILD_PITFALLS.md)。
+可启动应用放在仓库根下并单独列入 workspace：`server/`（`@lab/server`，Hono/OpenAPI）与 `web/`（`@lab/web`，Fresh v2）。这样既能 `import { … } from '@lab/<name>'` 引用 `packages` 里的包，又不会和应用实验混在一起。`server` 的构建踩坑记录见 [`server/docs/BUILD_PITFALLS.md`](./server/docs/BUILD_PITFALLS.md)。
 
 ## 初始化一个新子包
 
@@ -99,17 +99,17 @@ import { something } from '@lab/<name>';
 ```sh
 # 开发模式（watch）
 deno task --filter "@lab/playground" dev
-deno task --filter "@lab/app" dev
+deno task --filter "@lab/server" dev
 deno task --filter "@lab/web" dev
 
 # 只匹配名称的一部分也可以
 deno task --filter "playground" dev
-deno task --filter "app" dev
+deno task --filter "server" dev
 deno task --filter "web" dev
 
 # 运行一次
 deno task --filter "@lab/playground" start
-deno task --filter "@lab/app" start
+deno task --filter "@lab/server" start
 ```
 
 `--filter` 会隐式按 workspace 递归查找；只有带对应 task 的子包会执行。库没有 `dev` / `start`，对库跑这两个命令会报找不到 task。
@@ -126,7 +126,7 @@ deno task --recursive dev
 cd packages/playground
 deno task dev
 
-cd app
+cd server
 deno task dev
 
 cd web

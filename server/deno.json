@@ -1,5 +1,5 @@
 {
-  "name": "@lab/app",
+  "name": "@lab/server",
   "exports": "./main.ts",
   "imports": {
     "@hono/zod-openapi": "npm:@hono/zod-openapi@1",

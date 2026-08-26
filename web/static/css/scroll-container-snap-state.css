@@ -1,0 +1,96 @@
+.snap-x-container {
+  /* 设置滚动区域的锚点 */
+  anchor-name: --x-container;
+  scroll-marker-group: after;
+  scrollbar-width: none;
+
+  container-name: snap-x-container;
+
+  & > li {
+    container-type: scroll-state;
+    container-name: snap-container;
+  }
+
+  @container snap-container scroll-state(snapped: inline) {
+    figcaption {
+      translate: none;
+    }
+  }
+
+  li::scroll-marker {
+    content: '';
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  li::scroll-marker:hover {
+    border: 1px solid blueviolet;
+  }
+
+  & > li::scroll-marker:target-current {
+    background: blueviolet;
+  }
+
+  &::scroll-marker-group {
+    /* position-anchor: --x-container; */
+
+    display: flex;
+    gap: 1em;
+    place-content: center;
+    /* margin-block-start: -2.5em; */
+    height: 1.5em;
+  }
+}
+
+/* ===============>>>>>>>>>>按钮部分 */
+.snap-x-container::scroll-button(*):hover {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.snap-x-container::scroll-button(*) {
+  /* 设置滚动按钮的绝对定位 */
+  /* 设置滚动按钮的锚点 */
+  position: absolute;
+  z-index: 10;
+  /* 设置滚动按钮的锚点 */
+  position-anchor: --x-container;
+  /* 设置滚动按钮的居中对齐 */
+  align-self: anchor-center;
+  /* 设置滚动按钮的轮廓偏移 */
+  /* outline-offset: 5px; */
+  border-radius: 50%;
+  /*
+  border-style: solid; */
+  border: none;
+  height: 30px;
+  width: 30px;
+  background-color: rgba(0, 0, 0, 0.3);
+
+  cursor: pointer;
+  /* 使缩放具有平滑的过渡效果 */
+  transition: transform 0.1s ease-in-out;
+}
+
+.snap-x-container::scroll-button(*):hover {
+  transform: scale(1.1);
+}
+
+.snap-x-container::scroll-button(inline-start) {
+  content: "<" / "Scroll Left";
+  inset-inline-start: anchor(start);
+  inset-block-start: anchor(self-end);
+  border-radius: 50%;
+}
+
+.snap-x-container::scroll-button(inline-end) {
+  content: ">" / "Scroll Right";
+  inset-inline-end: anchor(end);
+  inset-block-start: anchor(self-end);
+  border-radius: 50%;
+}
+
+/* <<<<<<<======================按钮部分结束 */

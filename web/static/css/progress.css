@@ -1,0 +1,57 @@
+@property --p {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 10%;
+}
+
+:root {
+  --size: 200px;
+  --p: 10%;
+}
+
+.circle {
+  position: relative;
+  width: var(--size);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: conic-gradient(red calc(-60% + var(--p)), rgb(224, 187, 77) var(--p), #eee 0);
+  cursor: progress;
+
+  .indicator {
+    --size: min-content;
+    width: var(--size);
+    aspect-ratio: 1;
+    offset: path("M 100,0 a 100 100 0 1 1 -.1 0 z");
+    offset-distance: var(--p);
+    font: 43pt serif;
+    transform: rotateY(180deg) translateX(-6px);
+  }
+
+  &::before {
+    position: absolute;
+    inset: 20px;
+    content: '::before';
+    text-align: center;
+    line-height: 160px;
+    border-radius: inherit;
+    background: #fff;
+  }
+}
+
+@keyframes offsetDis {
+  0% {
+    --p: 0%;
+  }
+
+  100% {
+    --p: 100%;
+  }
+}
+
+.circle {
+  animation: offsetDis 2s linear infinite;
+
+  .indicator {
+    animation: offsetDis 2s linear infinite;
+  }
+}

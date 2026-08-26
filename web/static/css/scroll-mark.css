@@ -1,0 +1,75 @@
+.snap-x-container {
+  /* 设置滚动区域的锚点 */
+  anchor-name: --x-container;
+  scroll-marker-group: after;
+
+  scrollbar-width: none;
+
+  li::scroll-marker {
+    content: '';
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  ::scroll-marker:target-current {
+    background: blue;
+  }
+
+  &::scroll-marker-group {
+    display: flex;
+    gap: 1em;
+    place-content: center;
+    margin-block-start: -2em;
+    height: 1.5em;
+  }
+}
+
+/* ===============>>>>>>>>>>按钮部分 */
+.snap-x-container::scroll-button(*):hover {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.snap-x-container::scroll-button(*) {
+  /* 设置滚动按钮的绝对定位 */
+  /* 设置滚动按钮的锚点 */
+  position: absolute;
+  /* 设置滚动按钮的锚点 */
+  position-anchor: --x-container;
+  /* 设置滚动按钮的居中对齐 */
+  align-self: anchor-center;
+  /* 设置滚动按钮的轮廓偏移 */
+  /* outline-offset: 5px; */
+  border-radius: 50%;
+  /*
+  border-style: solid; */
+  border: none;
+  height: 30px;
+  width: 30px;
+  background-color: rgba(0, 0, 0, 0.3);
+
+  cursor: pointer;
+  /* 使缩放具有平滑的过渡效果 */
+  transition: transform 0.2s ease-in-out;
+}
+
+.snap-x-container::scroll-button(*):hover {
+  transform: scale(1.1);
+}
+
+.snap-x-container::scroll-button(inline-start) {
+  content: "<" / "Scroll Left";
+  right: calc(anchor(left) - 1.5em);
+  border-radius: 50%;
+}
+
+.snap-x-container::scroll-button(inline-end) {
+  content: ">" / "Scroll Right";
+  left: calc(anchor(right) - 1.5em);
+  border-radius: 50%;
+}
+
+/* <<<<<<<======================按钮部分结束 */

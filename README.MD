@@ -20,6 +20,12 @@
 │   ├── main.ts
 │   ├── src/
 │   └── docs/              # 构建踩坑记录
+├── web/                   # Fresh v2 前端（从 deno-fresh-v2 迁入，@lab/web）
+│   ├── deno.json
+│   ├── main.ts
+│   ├── vite.config.ts
+│   ├── routes/
+│   └── …
 ├── packages/
 │   ├── playground/        # Temporal + using 示例
 │   └── shared/            # app 的共享响应逻辑
@@ -28,7 +34,7 @@
 
 实验和库放在 `packages/<name>/`。根配置用 `packages/*` 自动收录一层目录，无需每次改根 `deno.json`。
 
-Web 应用放在根目录的 `app/`（包名 `@lab/app`），单独列入 workspace，这样既能 `import { … } from '@lab/<name>'` 引用 `packages` 里的包，又不会和应用实验混在一起。`app` 的构建踩坑记录见 [`app/docs/BUILD_PITFALLS.md`](./app/docs/BUILD_PITFALLS.md)。
+可启动应用放在仓库根下并单独列入 workspace：`app/`（`@lab/app`，Hono/OpenAPI）与 `web/`（`@lab/web`，Fresh v2）。这样既能 `import { … } from '@lab/<name>'` 引用 `packages` 里的包，又不会和应用实验混在一起。`app` 的构建踩坑记录见 [`app/docs/BUILD_PITFALLS.md`](./app/docs/BUILD_PITFALLS.md)。
 
 ## 初始化一个新子包
 
@@ -94,10 +100,12 @@ import { something } from '@lab/<name>';
 # 开发模式（watch）
 deno task --filter "@lab/playground" dev
 deno task --filter "@lab/app" dev
+deno task --filter "@lab/web" dev
 
 # 只匹配名称的一部分也可以
 deno task --filter "playground" dev
 deno task --filter "app" dev
+deno task --filter "web" dev
 
 # 运行一次
 deno task --filter "@lab/playground" start
@@ -119,6 +127,9 @@ cd packages/playground
 deno task dev
 
 cd app
+deno task dev
+
+cd web
 deno task dev
 ```
 

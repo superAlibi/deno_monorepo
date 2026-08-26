@@ -1,0 +1,27 @@
+:where(.anchor-position-container) button.anchor-button {
+  anchor-name: --button-anchor;
+}
+
+:where(.anchor-position-container) .infobox {
+  position-anchor: --button-anchor;
+  position: fixed;
+  inset-block-start: anchor(end);
+  inset-inline-start: anchor(self-end);
+  margin: 5px 0 0 5px;
+}
+
+:where(.anchor-position-container) .position-area-box {
+  position-anchor: --button-anchor;
+  position: fixed;
+  position-area: inline-start block-start;
+  inset: 0 5px 5px;
+}
+
+:where(.anchor-position-container) .with-anchor-width {
+  position-anchor: --button-anchor;
+  position: fixed;
+  position-area: center block-end;
+  inset: 5 0 0;
+  width: calc(anchor-size(with) - 20px);
+  /* justify-self: anchor-center; */
+}

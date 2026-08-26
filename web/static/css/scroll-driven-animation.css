@@ -1,0 +1,72 @@
+@supports not selector(::scroll-marker-group) {
+  .scroll-driven-animation-container::after {
+    content: "Your browser does not support scroll-marker-group";
+  }
+}
+
+@supports not (scroll-marker-group: after) {
+  .scroll-driven-animation-container::after {
+    content: "Your browser does not support (scroll-marker-group: after)";
+  }
+}
+
+/* 扩展滚动时间线的作用范围，让 main 及其后代元素都可以访问 */
+.scroll-timeline-scope {
+  timeline-scope: --scroll-driven-animation-container;
+}
+
+.scroll-driven-animation-container {
+  scroll-timeline: --scroll-driven-animation-container y;
+
+  scrollbar-width: none;
+  /* 设置标记组的锚点伪元素插入位置 */
+  scroll-marker-group: after;
+
+  /* 仅仅为子级元素设置滚动标记, 并制定其基本样式 */
+  > li::scroll-marker {
+    content: '';
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px solid blueviolet;
+  }
+
+  /* 设置当前已经被粘贴的标记的样式 */
+  ::scroll-marker:target-current {
+    background: blueviolet;
+    box-shadow: 0 0 0 2px blueviolet;
+  }
+
+  /* 设置标记组的样式 */
+  &::scroll-marker-group {
+    /* 首先将其设置为基于视口的固定定位, 并沾满整个视口高度 */
+    position: fixed;
+    inset-block: 0;
+    inset-inline-end: 1em;
+    inset-inline-start: auto;
+    height: 100vh;
+    /* 然后将其设置为flex布局, 并将其子元素垂直居中 */
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    gap: 1em;
+  }
+}
+
+a[href="#image-0"] {
+  animation: back-progress 1s linear forwards;
+  animation-timeline: --scroll-driven-animation-container;
+  animation-range: 0 100px;
+}
+
+@keyframes back-progress {
+  from {
+    transform: translateY(150%);
+  }
+
+  to {
+    transform: translateY(0%);
+  }
+}

@@ -1,0 +1,11 @@
+.container {
+  transition: transform 4s, background-color 4s;
+  transform: scale(1, 1);
+}
+
+@starting-style {
+  .container {
+    background-color: blue;
+    transform: scale(0.5, 1);
+  }
+}

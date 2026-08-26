@@ -1,4 +1,4 @@
-import { FaSignOutAlt } from 'react-icons/fa';
+import { FaGithub, FaSignOutAlt } from 'react-icons/fa';
 import { State } from 'tools/utils.ts';
 import { VNode } from 'preact';
 
@@ -100,11 +100,11 @@ export function HeaderNavbar(props: HaderNavbarProps) {
         {state.githubSessionId
           ? (
             <a
-              title='Sign out'
+              title='退出登录'
               href='/api/oauth/signout'
               class='btn btn-square rounded-full'
             >
-              退出登录<FaSignOutAlt size={24} />
+              <FaSignOutAlt size={24} />
             </a>
           )
           : (
@@ -114,8 +114,7 @@ export function HeaderNavbar(props: HaderNavbarProps) {
               type='button'
               className='btn btn-outline '
             >
-              使用 GitHub 登录
-              {/* <FaGithub size={24} /> */}
+              <FaGithub size={24} />
             </a>
           )}
       </div>
